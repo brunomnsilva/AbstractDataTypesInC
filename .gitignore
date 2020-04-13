@@ -1,0 +1,22 @@
+# Ignore untracked folders / files
+
+introduction/
+WPI/
+*.py
+*.sh
+
+# Ignore uncommented versions of files
+
+*_uncommented*
+
+# Ignore all generated doxygen folders
+
+**/html
+
+# Ignore compiled files
+
+**/prog
+**/program
+*.out
+*.o
+
