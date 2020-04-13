@@ -15,8 +15,7 @@
 int main() {
 
 	PtComplex a = complexCreate(1,4);
-	//PtComplex b = complexCreate(3,2);
-	PtComplex b = complexCreate(1,-4);
+	PtComplex b = complexCreate(3,2);
 	PtComplex c = NULL;
 
 	if( a == NULL || b == NULL) {
