@@ -90,7 +90,7 @@ PtComplex complexMultiply (PtComplex w, PtComplex z);
 * @return COMPLEX_OK and computed magnitude assigned to '*modulus'
 * @return COMPLEX_NULL if 'c' is NULL and '*modulus' unchanged
 */
-int complexMod (PtComplex w, double* modulus);
+int complexMod (PtComplex w, double *modulus);
 
 /**
 * @brief Take the argument (or angle) of a complex number.
