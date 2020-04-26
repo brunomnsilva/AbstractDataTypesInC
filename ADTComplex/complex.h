@@ -15,7 +15,7 @@ struct complex;
 typedef struct complex* PtComplex;
 
 /**
- * @brief Create a new `Complex` number from two `double`s.
+ * @brief Create a new complex number from two `double`s.
  * 
  * @param re [in] real component
  * @param im  [in] imaginary component
@@ -26,7 +26,7 @@ typedef struct complex* PtComplex;
 PtComplex complexCreate (double re, double im);
 
 /**
-* @brief Release all resources of a `Complex` number.
+* @brief Release all resources of a complex number.
 * 
 * @param ptC [in] ADDRESS OF PtComplex pointer to the data structure.
 *
@@ -36,7 +36,7 @@ PtComplex complexCreate (double re, double im);
 int complexDestroy (PtComplex *ptC);
 
 /**
-* @brief Retrieve the real part of the `Complex` number.
+* @brief Retrieve the real part of the complex number.
 *
 * @param c [in] PtComplex pointer to the number's data structure.
 * @param re [out] Address of variable to hold result
@@ -47,7 +47,7 @@ int complexDestroy (PtComplex *ptC);
 int complexRe (PtComplex c, double *re);
 
 /**
-* @brief Retrieve the imaginary part of the `Complex` number.
+* @brief Retrieve the imaginary part of the complex number.
 *
 * @param c [in] PtComplex pointer to the number's data structure.
 * @param im [out] Address of variable to hold result
@@ -58,7 +58,7 @@ int complexRe (PtComplex c, double *re);
 int complexIm (PtComplex c, double *im);
 
 /**
- * @brief Add two `Complex` numbers together.
+ * @brief Add two complex numbers together.
  * 
  * @param w [in] PtComplex pointer to the data structure of first number.
  * @param z [in] PtComplex pointer to the data structure of second number.
@@ -70,7 +70,7 @@ int complexIm (PtComplex c, double *im);
 PtComplex complexAdd (PtComplex w, PtComplex z);
 
 /**
- * @brief Multiply two `Complex` numbers together.
+ * @brief Multiply two complex numbers together.
  * 
  * @param w [in] PtComplex pointer to the data structure of first number.
  * @param z [in] PtComplex pointer to the data structure of second number.
@@ -82,7 +82,7 @@ PtComplex complexAdd (PtComplex w, PtComplex z);
 PtComplex complexMultiply (PtComplex w, PtComplex z);
 
 /**
-* @brief Take the magnitude (or modulus, or absolute) of a `Complex` number.
+* @brief Take the magnitude (or modulus, or absolute) of a complex number.
 *
 * @param w [in] PtComplex pointer to the number's data structure.
 * @param modulus [out] Address of variable to hold result
@@ -93,7 +93,7 @@ PtComplex complexMultiply (PtComplex w, PtComplex z);
 int complexMod (PtComplex w, double* modulus);
 
 /**
-* @brief Take the argument (or angle) of a `Complex` number.
+* @brief Take the argument (or angle) of a complex number.
 *
 * @param w [in] PtComplex pointer to the number's data structure.
 * @param argument [out] Address of variable to hold the value

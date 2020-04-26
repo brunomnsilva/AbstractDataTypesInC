@@ -1,6 +1,6 @@
 /**
  * @file complex.c
- * @brief Defines a data structure and implements Complex.h
+ * @brief Defines a data structure and implements complex.h
  * 
  * @author Bruno Silva (brunomnsilva@gmail.com)
  * @bug No known bugs.
@@ -70,9 +70,6 @@ PtComplex complexAdd (PtComplex w, PtComplex z) {
 }
 
 PtComplex complexMultiply (PtComplex w, PtComplex z) {
-    // evaluate the expression (ac-bd)+(bc+ad)i considering,
-    // that a+ib and c+id are the two complex numbers.
-
     if( w == NULL || z == NULL) return NULL;
 
     PtComplex c = complexCreate(0,0);

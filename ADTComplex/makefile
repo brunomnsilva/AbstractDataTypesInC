@@ -1,5 +1,5 @@
 all:
-	gcc -g -o prog -lm Complex.c main.c
+	gcc -g -o prog complex.c main.c -lm 
 
 clean:
 	rm -f prog

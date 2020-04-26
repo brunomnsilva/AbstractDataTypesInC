@@ -122,3 +122,4 @@ int stackClear(PtStack stack);
  * @param stack [in] pointer to the stack
  */
 void stackPrint(PtStack stack);
+

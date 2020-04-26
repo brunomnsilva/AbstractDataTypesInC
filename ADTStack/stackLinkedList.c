@@ -23,123 +23,123 @@ typedef struct node {
 } Node;
 
 typedef struct stackImpl { 
-	PtNode header;
+    PtNode header;
     PtNode trailer;
-	int size;
+    int size;
 } StackImpl;
 
 PtStack stackCreate(unsigned int initialCapacity) {
-	PtStack stack = (PtStack)malloc(sizeof(StackImpl));
-	if (stack == NULL) return NULL;
-	
-	stack->header = (PtNode)malloc(sizeof(Node));
-	if (stack->header == NULL) {
-		free(stack);
-		return NULL;
-	}
-	stack->trailer = (PtNode)malloc(sizeof(Node));
-	if (stack->trailer == NULL) {
-		free(stack->header);
-		free(stack);
-		return NULL;
-	}
+    PtStack stack = (PtStack)malloc(sizeof(StackImpl));
+    if (stack == NULL) return NULL;
+    
+    stack->header = (PtNode)malloc(sizeof(Node));
+    if (stack->header == NULL) {
+        free(stack);
+        return NULL;
+    }
+    stack->trailer = (PtNode)malloc(sizeof(Node));
+    if (stack->trailer == NULL) {
+        free(stack->header);
+        free(stack);
+        return NULL;
+    }
 
-	stack->header->prev = NULL;
-	stack->header->next = stack->trailer;
+    stack->header->prev = NULL;
+    stack->header->next = stack->trailer;
 
-	stack->trailer->next = NULL;
-	stack->trailer->prev = stack->header;
+    stack->trailer->next = NULL;
+    stack->trailer->prev = stack->header;
 
-	return stack;
+    return stack;
 }
 
 int stackDestroy(PtStack *ptStack) {
-	PtStack stack = (*ptStack);
+    PtStack stack = (*ptStack);
 
-	if (stack == NULL) return STACK_NULL;
+    if (stack == NULL) return STACK_NULL;
 
-	PtNode current = stack->header->next;
+    PtNode current = stack->header->next;
     while(current != stack->trailer) {
         current = current->next;
         free(current->prev);
     }
 
-	free(stack->header);
-	free(stack->trailer);
-	free(stack);
+    free(stack->header);
+    free(stack->trailer);
+    free(stack);
 
-	*ptStack = NULL;
+    *ptStack = NULL;
 
-	return STACK_OK;
+    return STACK_OK;
 }
 
 int stackPush(PtStack stack, StackElem elem) {
-	if (stack == NULL) return STACK_NULL;
-	
-	PtNode newTop = (PtNode)malloc(sizeof(Node));
-	if(newTop == NULL) return STACK_FULL;
+    if (stack == NULL) return STACK_NULL;
+    
+    PtNode newTop = (PtNode)malloc(sizeof(Node));
+    if(newTop == NULL) return STACK_FULL;
 
-	PtNode curTop = stack->header->next;
+    PtNode curTop = stack->header->next;
 
-	newTop->element = elem;
-	newTop->prev = stack->header;
-	newTop->next = curTop;
+    newTop->element = elem;
+    newTop->prev = stack->header;
+    newTop->next = curTop;
 
-	stack->header->next = newTop;
-	curTop->prev = newTop;
+    stack->header->next = newTop;
+    curTop->prev = newTop;
 
-	stack->size++;
+    stack->size++;
 
-	return STACK_OK;
+    return STACK_OK;
 }
 
 int stackPop(PtStack stack, StackElem *ptElem) {
-	if (stack == NULL) return STACK_NULL;
+    if (stack == NULL) return STACK_NULL;
 
-	if (stack->size == 0) return STACK_EMPTY;
+    if (stack->size == 0) return STACK_EMPTY;
 
     PtNode curTop = stack->header->next;
-	PtNode newTop = stack->header->next->next;
+    PtNode newTop = stack->header->next->next;
 
-	*ptElem =  curTop->element;
+    *ptElem =  curTop->element;
 
-	stack->header->next = newTop;
-	newTop->prev = stack->header;
+    stack->header->next = newTop;
+    newTop->prev = stack->header;
 
-	//(curTop);
+    //(curTop);
 
-	stack->size--;
+    stack->size--;
 
-	return STACK_OK;
+    return STACK_OK;
 }
 
 int stackPeek(PtStack stack, StackElem *ptElem) {
-	if (stack == NULL) return STACK_NULL;
+    if (stack == NULL) return STACK_NULL;
 
-	if (stack->size == 0) return STACK_EMPTY;
+    if (stack->size == 0) return STACK_EMPTY;
 
-	PtNode curTop = stack->header->next;
-	*ptElem = curTop->element;
+    PtNode curTop = stack->header->next;
+    *ptElem = curTop->element;
 
-	return STACK_OK;
+    return STACK_OK;
 }
 
 int stackSize(PtStack stack, int *ptSize) {
-	if (stack == NULL) return STACK_NULL;
+    if (stack == NULL) return STACK_NULL;
 
-	*ptSize = stack->size;
+    *ptSize = stack->size;
 
-	return STACK_OK;
+    return STACK_OK;
 }
 
 bool stackIsEmpty(PtStack stack) {
-	if (stack == NULL) return true;
+    if (stack == NULL) return true;
 
-	return (stack->size == 0);
+    return (stack->size == 0);
 }
 
 int stackClear(PtStack stack) {
-	if (stack == NULL) return STACK_NULL;
+    if (stack == NULL) return STACK_NULL;
 
     PtNode current = stack->header->next;
     while(current != stack->trailer) {
@@ -150,30 +150,30 @@ int stackClear(PtStack stack) {
     stack->header->next = stack->trailer;
     stack->trailer->prev = stack->header;
 
-	stack->size = 0;
+    stack->size = 0;
 
-	return STACK_OK;
+    return STACK_OK;
 }
 
 void stackPrint(PtStack stack) {
-	if (stack == NULL) {
-		printf("(Stack NULL)");
-	}
-	else if (stack->size == 0) {
-		printf("(Stack Empty)");
-	}
-	else {
-		printf("Stack contents (top to bottom): \n");
-		/* Print elements from top to bottom */
-		PtNode current = stack->header->next;
-		while (current != stack->trailer) {
-			stackElemPrint(current->element);
-			printf("\n");
-			
-			current = current->next;
-		}
-		printf("--- bottom --- \n");
-	}
-	printf("\n");
+    if (stack == NULL) {
+        printf("(Stack NULL)");
+    }
+    else if (stack->size == 0) {
+        printf("(Stack Empty)");
+    }
+    else {
+        printf("Stack contents (top to bottom): \n");
+        /* Print elements from top to bottom */
+        PtNode current = stack->header->next;
+        while (current != stack->trailer) {
+            stackElemPrint(current->element);
+            printf("\n");
+            
+            current = current->next;
+        }
+        printf("--- bottom --- \n");
+    }
+    printf("\n");
 }
 

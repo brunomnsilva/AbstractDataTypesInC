@@ -13,6 +13,10 @@ WPI/
 
 **/html
 
+# Ignore all exercise solutions
+
+**/exercises
+
 # Ignore compiled files
 
 **/prog
