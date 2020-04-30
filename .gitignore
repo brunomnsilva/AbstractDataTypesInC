@@ -5,6 +5,10 @@ WPI/
 *.py
 *.sh
 
+# Ignore working folders
+
+ADTStackGeneric/
+
 # Ignore uncommented versions of files
 
 *_uncommented*
