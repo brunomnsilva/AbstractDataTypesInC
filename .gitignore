@@ -8,6 +8,7 @@ WPI/
 # Ignore working folders
 
 ADTStackGeneric/
+ADTMapHashTable/
 
 # Ignore uncommented versions of files
 
