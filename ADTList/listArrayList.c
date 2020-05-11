@@ -19,7 +19,7 @@ typedef struct listImpl {
 } ListImpl;
 
 
-bool ensureCapacity(PtList list) {
+static bool ensureCapacity(PtList list) {
 	if (list->size == list->capacity) {
 		int newCapacity = list->capacity * 2;
 		ListElem* newArray = (ListElem*) realloc( list->elements, 

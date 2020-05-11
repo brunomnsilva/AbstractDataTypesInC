@@ -33,7 +33,7 @@ typedef struct mapImpl {
  * @return index of 'elements' containing 'key', or
  * @return -1 if no index contains 'key'
  */
-int findIndexOfKey(PtMap map, MapKey key) {
+static int findIndexOfKey(PtMap map, MapKey key) {
 	if (map == NULL) return -1;
 
 	for (int i = 0; i < map->size; i++) {
@@ -44,7 +44,7 @@ int findIndexOfKey(PtMap map, MapKey key) {
 	return -1;
 }
 
-bool ensureCapacity(PtMap map) {
+static bool ensureCapacity(PtMap map) {
 	if (map->size == map->capacity) {
 		int newCapacity = map->capacity * 2;
 		KeyValue* newArray = (KeyValue*) realloc( map->elements, 

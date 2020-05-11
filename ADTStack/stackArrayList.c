@@ -19,7 +19,7 @@ typedef struct stackImpl {
     int size;               /* current number of elements */
 } StackImpl;
 
-bool ensureCapacity(PtStack stack) {
+static bool ensureCapacity(PtStack stack) {
     if (stack->size == stack->capacity) {
         int newCapacity = stack->capacity * 2;
         StackElem* newArray = (StackElem*) realloc( stack->elements, 

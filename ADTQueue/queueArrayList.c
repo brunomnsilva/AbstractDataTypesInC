@@ -18,7 +18,7 @@ typedef struct queueImpl {
 	int size;
 } QueueImpl;
 
-bool ensureCapacity(PtQueue queue) {
+static bool ensureCapacity(PtQueue queue) {
 	if (queue->size == queue->capacity) {
 		int newCapacity = queue->capacity * 2;
 		QueueElem* newArray = (QueueElem*) realloc( queue->elements, 
