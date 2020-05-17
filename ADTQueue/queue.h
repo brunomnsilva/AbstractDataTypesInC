@@ -1,5 +1,5 @@
 /**
- * @file stack.h
+ * @file queue.h
  * @brief Definition of the ADT Queue in C.
  * 
  * Defines the type PtQueue and associated operations.
@@ -85,7 +85,7 @@ int queueFront(PtQueue queue, QueueElem *ptElem);
 /**
  * @brief Retrieves the size of a queue.
  * 
- * @param stack [in] pointer to the queue
+ * @param queue [in] pointer to the queue
  * @param ptSize [out] address of variable to hold the value
  * 
  * @return QUEUE_OK if successful and value in 'ptSize', or

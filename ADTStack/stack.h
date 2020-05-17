@@ -16,8 +16,8 @@
 #define STACK_EMPTY         3
 #define STACK_FULL          4
 
-#include "stackElem.h"
 #include <stdbool.h>
+#include "stackElem.h"
 
 /** Forward declaration of the data structure. */
 struct stackImpl;

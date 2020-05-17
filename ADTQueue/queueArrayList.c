@@ -132,7 +132,6 @@ void queuePrint(PtQueue queue) {
 		printf("(Queue Empty) \n");
 	}
 	else {
-		//imprimir do inicio para o fim da fila:
 		printf("Queue contents (front to rear): \n");
 		for (int i = 0; i < queue->size; i++) {
 			queueElemPrint(queue->elements[i]);

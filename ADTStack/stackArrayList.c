@@ -12,11 +12,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* 'struct stackImpl' forward declared in stack.h */
 typedef struct stackImpl { 
-    StackElem *elements;    /* unalocated array of elements */
-    int capacity;           /* length of allocated array */
-    int size;               /* current number of elements */
+    StackElem *elements;   
+    int capacity;     
+    int size;      
 } StackImpl;
 
 static bool ensureCapacity(PtStack stack) {
@@ -126,7 +125,6 @@ void stackPrint(PtStack stack) {
         printf("(Stack Empty)\n");
     }
     else {
-        /* print elements from top to bottom */
         printf("Stack contents (top to bottom): \n");
     
         for (int i = stack->size - 1; i >= 0; i--) {
