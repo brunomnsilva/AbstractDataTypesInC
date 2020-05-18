@@ -106,7 +106,7 @@ int stackPop(PtStack stack, StackElem *ptElem) {
     stack->header->next = newTop;
     newTop->prev = stack->header;
 
-    //(curTop);
+    free(curTop);
 
     stack->size--;
 
