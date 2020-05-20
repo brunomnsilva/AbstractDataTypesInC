@@ -19,7 +19,7 @@ typedef char QueueElem;
 /**
  * @brief Prints an element.
  * 
- * Must be implemented according concrete
+ * Must be implemented according to concrete
  * type of QueueElem.
  * 
  * @param elem [in] element to print

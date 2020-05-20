@@ -10,5 +10,5 @@
 #include <stdio.h>
 
 void queueElemPrint(QueueElem elem) {
-	printf("%c \n", elem);
+	printf("%c", elem);
 }

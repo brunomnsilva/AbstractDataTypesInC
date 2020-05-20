@@ -25,7 +25,7 @@ typedef struct node {
 typedef struct queueImpl {
 	PtNode header;
 	PtNode trailer;
-	
+	int size;
 } QueueImpl;
 
 
@@ -58,34 +58,16 @@ int queueDestroy(PtQueue *ptQueue) {
 	PtQueue queue = *ptQueue;
 	if (queue == NULL) { return QUEUE_NULL;	}
 
-	//alternativa 1:
-	/*queueClear(queue);
-
-	free(queue->header);
-	free(queue->trailer);
-	free(queue);*/
-
-	//alternativa 2:
-	/*PtNode current = queue->header->next;
-	while (current != queue->trailer) {
-		PtNode remove = current;
-		current = current->next;
-		free(remove);
-	}
-	free(queue->header);
-	free(queue->trailer);
-	free(queue);*/
-
-	//alternativa 3: libertar todos os nos, incluindo header e trailer, num unico ciclo
+	/* This algorithm free all nodes including sentinels */
 	PtNode current = queue->header;
 	while (current != NULL) {
 		PtNode remove = current;
 		current = current->next;
 		free(remove);
 	}
-	free(queue);
 
-	//outras alternativas: percorrer a lista ligada no sentido inverso
+	/* free data structure */
+	free(queue);
 
 	*ptQueue = NULL;
 
@@ -95,18 +77,19 @@ int queueDestroy(PtQueue *ptQueue) {
 int queueEnqueue(PtQueue queue, QueueElem elem) {
 	if (queue == NULL) {return QUEUE_NULL;	}
 
-	PtNode newNode = (PtNode)malloc(sizeof(Node));
-	if (newNode == NULL) return QUEUE_NO_MEMORY;
+	PtNode newEnd = (PtNode)malloc(sizeof(Node));
+	if (newEnd == NULL) return QUEUE_NO_MEMORY;
 
 	PtNode curEnd = queue->trailer->prev;
 
-	newNode->element = elem;
-	newNode->next = queue->trailer;
-	newNode->prev = curEnd;
+	newEnd->element = elem;
+	newEnd->next = queue->trailer;
+	newEnd->prev = curEnd;
 
-	queue->trailer->prev = newNode;
-	curEnd->next = newNode;
+	queue->trailer->prev = newEnd;
+	curEnd->next = newEnd;
 
+	queue->size++;
 
 	return QUEUE_OK;
 }
@@ -116,15 +99,17 @@ int queueDequeue(PtQueue queue, QueueElem *ptElem) {
 
 	if (queueIsEmpty(queue)) {return QUEUE_EMPTY;	}
 
-	PtNode curStart = queue->header->next;
-	*ptElem = curStart->element;
+	PtNode curFront = queue->header->next;
+	PtNode newFront = curFront->next; 
 
-	PtNode newStart = curStart->next; //ou queue->header->next->next;
+	*ptElem = curFront->element;
 
-	queue->header->next = newStart;
-	newStart->prev = queue->header;
+	queue->header->next = newFront;
+	newFront->prev = queue->header;
 	
-	free(curStart);
+	free(curFront);
+
+	queue->size--;
 
 	return QUEUE_OK;
 }
@@ -134,12 +119,8 @@ int queueFront(PtQueue queue, QueueElem *ptElem) {
 
 	if (queueIsEmpty(queue)) {	return QUEUE_EMPTY;	}
 
-	//alternativa 1:
-	//*ptElem = queue->header->next->element;
-
-	//alternativa 2:
-	PtNode curStart = queue->header->next;
-	*ptElem = curStart->element;
+	PtNode curFront = queue->header->next;
+	*ptElem = curFront->element;
 	
 	return QUEUE_OK;
 }
@@ -147,41 +128,22 @@ int queueFront(PtQueue queue, QueueElem *ptElem) {
 int queueSize(PtQueue queue, int *ptSize) {
 	if (queue == NULL) return QUEUE_NULL;
 
-	int count = 0;
-	PtNode current = queue->header->next;
-	while (current != queue->trailer) {
-		count++;
-		current = current->next;
-	}
-	*ptSize = count;
+	*ptSize = queue->size;
+
 	return QUEUE_OK;
 }
 
 bool queueIsEmpty(PtQueue queue) {
-	if (queue == NULL) return 1;
-	return (queue->header->next == queue->trailer) ? true : false;
+	if (queue == NULL) return true;
+
+	return (queue->size == 0);
 }
 
 int queueClear(PtQueue queue) {
 	if (queue == NULL) return QUEUE_NULL;
 	
-	//alternativa 1:
-	//PtNode current = queue->header->next;
-	//while (current != queue->trailer) {
-	//	//alternativa 1:
-	//	PtNode remove = current;
-	//	current = current->next;
-	//	free(remove);
-
-	//	//alternativa 2:
-	//	/*current = current->next;
-	//	free(current->prev);*/
-	//}
-
-	//queue->header->next = queue->trailer;
-	//queue->trailer->prev = queue->header;
-
-	//alternativa 3:
+	/* Alternate implementation that leverages 
+	   queueDequeue to free nodes and decrement size */
 	QueueElem elem;
 	while (!queueIsEmpty(queue)) {
 		queueDequeue(queue, &elem);

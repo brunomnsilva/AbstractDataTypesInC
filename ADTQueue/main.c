@@ -2,7 +2,7 @@
  * @file main.c
  * 
  * @brief Provides an example program that uses the
- * ADT Queue. Please note that the StackElem type
+ * ADT Queue. Please note that the QueueElem type
  * must be defined as 'char'.
  * 
  * @author Bruno Silva (brunomnsilva@gmail.com)
@@ -16,33 +16,34 @@
 
 int main() {
 
-	PtQueue s = queueCreate(10);
+	PtQueue q = queueCreate(10);
 
-	printf("Enqueueing characters a,b,c and d... \n");
-	queueEnqueue(s, 'a');
-	queueEnqueue(s, 'b');
-	queueEnqueue(s, 'c');
-	queueEnqueue(s, 'd');
+	printf("Enqueueing characters a, b, c and d... ");
+	queueEnqueue(q, 'a');
+	queueEnqueue(q, 'b');
+	queueEnqueue(q, 'c');
+	queueEnqueue(q, 'd');
+	printf("Done. \n");
 
-	queuePrint(s); //a,b,c,d
+	int size;
+	queueSize(q, &size);
+	printf("\nQueue contains %d elements.\n\n", size);
 
-	QueueElem x;
-	queueFront(s, &x);
-	printf("Elemento in front of queue: ");
-	queueElemPrint(x); //a
+	char x;
+	queueFront(q, &x);
+	printf("Element at front of queue: %c \n", x);
 
-	printf("Dequeueing all elements... \n");
-	while (!queueIsEmpty(s)) {
-		QueueElem y;
-		queueDequeue(s, &y);
-		queueElemPrint(y); //a,b,c,d
+	printf("Dequeueing all elements until empty: \n");
+	while (!queueIsEmpty(q)) {
+		queueDequeue(q, &x);
+		queueElemPrint(x); //expected: a,b,c,d
+		printf("\n");
 	}
 
-	queuePrint(s); //empty
+	queueSize(q, &size);
+	printf("\nQueue contains %d elements.\n\n", size);
 
-	queueDestroy(&s);
-
-	queuePrint(s); // (NULL)
+	queueDestroy(&q);
 
 	return EXIT_SUCCESS;
 }
