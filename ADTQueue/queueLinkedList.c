@@ -161,13 +161,14 @@ void queuePrint(PtQueue queue) {
 	}
 	else {
 		//imprimir do inicio para o fim da fila:
-		printf("Queue contents (begin to end): \n");
+		printf("Queue contents (front to end): \n");
 		PtNode current = queue->header->next;
 		while (current != queue->trailer) {
 			queueElemPrint(current->element);
+			printf(" ");
 			current = current->next;
 		}
-		printf("------------------------------ \n");
+		printf("\n------------------------------ \n");
 	}
 }
 

@@ -16,7 +16,7 @@
 
 int main() {
 
-	PtQueue q = queueCreate(10);
+	PtQueue q = queueCreate(1);
 
 	printf("Enqueueing characters a, b, c and d... ");
 	queueEnqueue(q, 'a');

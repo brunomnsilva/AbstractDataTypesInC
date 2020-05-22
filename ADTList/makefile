@@ -1,9 +1,7 @@
-all: al
-
-al:
+arraylist:
 	gcc -o prog -g main.c listElem.c listArrayList.c
-
-ll:
+	
+linkedlist:
 	gcc -o prog -g main.c listElem.c listLinkedList.c
 
 clean:

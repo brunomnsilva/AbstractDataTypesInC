@@ -53,9 +53,7 @@ PtQueue queueCreate(unsigned int initialCapacity) {
 
 int queueDestroy(PtQueue *ptQueue) {
 	PtQueue queue = *ptQueue;
-	if (queue == NULL) {
-		return QUEUE_NULL;
-	}
+	if (queue == NULL) return QUEUE_NULL;
 
 	free(queue->elements);
 	free(queue);
@@ -65,20 +63,17 @@ int queueDestroy(PtQueue *ptQueue) {
 }
 
 int queueEnqueue(PtQueue queue, QueueElem elem) {
-	if (queue == NULL) {
-		return QUEUE_NULL;
-	}
+	if (queue == NULL) return QUEUE_NULL;
 
 	if(!ensureCapacity(queue)) return QUEUE_FULL;
 
 	queue->elements[queue->size++] = elem;
+	
 	return QUEUE_OK;
 }
 
 int queueDequeue(PtQueue queue, QueueElem *ptElem) {
-	if (queue == NULL) {
-		return QUEUE_NULL;
-	}
+	if (queue == NULL) return QUEUE_NULL;
 
 	if (queueIsEmpty(queue)) {
 		return QUEUE_EMPTY;
@@ -91,36 +86,39 @@ int queueDequeue(PtQueue queue, QueueElem *ptElem) {
 	}
 
 	queue->size--;
+
 	return QUEUE_OK;
 }
 
 int queueFront(PtQueue queue, QueueElem *ptElem) {
-	if (queue == NULL) {
-		return QUEUE_NULL;
-	}
+	if (queue == NULL) return QUEUE_NULL;
 
-	if (queueIsEmpty(queue)) {
-		return QUEUE_EMPTY;
-	}
+	if (queueIsEmpty(queue)) return QUEUE_EMPTY;
 
 	*ptElem = queue->elements[0];
+
 	return QUEUE_OK;
 }
 
 int queueSize(PtQueue queue, int *ptSize) {
 	if (queue == NULL) return QUEUE_NULL;
+
 	*ptSize = queue->size;
+
 	return QUEUE_OK;
 }
 
 bool queueIsEmpty(PtQueue queue) {
 	if (queue == NULL) return true;
+
 	return (queue->size > 0) ? false : true;
 }
 
 int queueClear(PtQueue queue) {
 	if (queue == NULL) return QUEUE_NULL;
+
 	queue->size = 0;
+
 	return QUEUE_OK;
 }
 
@@ -132,11 +130,12 @@ void queuePrint(PtQueue queue) {
 		printf("(Queue Empty) \n");
 	}
 	else {
-		printf("Queue contents (front to rear): \n");
+		printf("Queue contents (front to end): \n");
 		for (int i = 0; i < queue->size; i++) {
 			queueElemPrint(queue->elements[i]);
+			printf(" ");
 		}
-		printf("------------------------------ \n");
+		printf("\n------------------------------ \n");
 	}
 }
 
