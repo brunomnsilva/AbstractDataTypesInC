@@ -67,6 +67,7 @@ int listDestroy(PtList *ptList) {
 int listAdd(PtList list, int rank, ListElem elem) {
 	if (list == NULL) return LIST_NULL;
 	if (rank < 0 || rank > list->size) return LIST_INVALID_RANK;
+
 	if(!ensureCapacity(list)) return LIST_FULL;
 
 	/* make room for new element at index 'rank' */
@@ -86,7 +87,6 @@ int listRemove(PtList list, int rank, ListElem *ptElem) {
 	if (list->size == 0) return LIST_EMPTY;
 	if (rank < 0 || rank > list->size - 1) return LIST_INVALID_RANK;
 
-	/* return by-reference the element at specified rank*/
 	*ptElem = list->elements[rank];
 
 	/* close the gap at this rank */
@@ -103,7 +103,6 @@ int listGet(PtList list, int rank, ListElem *ptElem) {
 	if (list == NULL) return LIST_NULL;
 	if (rank < 0 || rank > list->size - 1) return LIST_INVALID_RANK;
 
-	/* return by-reference the element at specified rank*/
 	*ptElem = list->elements[rank];
 
 	return LIST_OK;
@@ -113,9 +112,8 @@ int listSet(PtList list, int rank, ListElem elem, ListElem *ptOldElem) {
 	if (list == NULL) return LIST_NULL;
 	if (rank < 0 || rank > list->size - 1) return LIST_INVALID_RANK;
 
-	/* 	return by-reference the element at specified rank 
-		and place the new one. The size remains the same */
 	*ptOldElem = list->elements[rank];
+	
 	list->elements[rank] = elem;
 
 	return LIST_OK;

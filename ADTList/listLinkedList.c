@@ -28,7 +28,7 @@ typedef struct listImpl {
 } ListImpl;
 
 
-PtNode nodeAtRank(PtList list, int rank) {
+static PtNode nodeAtRank(PtList list, int rank) {
 	
 	int currentRank = 0;
 	PtNode currentNode = list->header->next;
@@ -168,9 +168,8 @@ int listClear(PtList list) {
 
 	PtNode current = list->header->next;
 	while (current != list->trailer) {
-		PtNode remove = current;
 		current = current->next;
-		free(remove);
+		free(current->prev);
 	}
 
 	list->header->next = list->trailer;
@@ -180,6 +179,7 @@ int listClear(PtList list) {
 
 	return LIST_OK;
 }
+
 void listPrint(PtList list) {
 	if (list == NULL) {
 		printf("(LIST NULL)\n");
@@ -201,3 +201,4 @@ void listPrint(PtList list) {
 	}
 	printf("\n");
 }
+

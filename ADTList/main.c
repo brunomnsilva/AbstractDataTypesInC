@@ -11,49 +11,37 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "list.h"
 
 int main(int argc, char** argv) {
+	srand(time(NULL));
 
-	ListElem elem;
 	PtList list = listCreate(10);
-
-	listAdd(list, 0, 7);
-	listAdd(list, 0, 4);
-	listAdd(list, 1, 5);
-	listAdd(list, 1, 3);
-	listAdd(list, 4, 9);
-	listAdd(list, 2, 2);
-	listAdd(list, 6, 1);
-
-	listPrint(list); //Expected: 4,3,2,5,7,9,1
-		
-	if (listGet(list, 9, &elem) == LIST_INVALID_RANK) {
-		printf("9 is an invalid rank!\n");
+	/* Populate with values*/
+	for(int i=0; i < 9; i++) {
+		listAdd(list, i, (i+1) );
 	}
 
-	listRemove(list, 1, &elem);
-	printf("Element removed from rank 1: ");
-	listElemPrint(elem);
-
+	printf("\n--- Initial list ---\n");
 	listPrint(list);
-
-	int size;
-	listSize(list, &size);
-	printf("List size: %d \n", size);
-
-	printf("Accessing all elements backwards: \n");	
-	for (int i = size-1; i>=0; i--) {
-		listGet(list, i, &elem);
-		listElemPrint(elem);
-	}
 	
+	/* Shuffle */
+	int n;
+	listSize(list, &n);
+	int elem1, elem2;	
+	for(int i=0; i < n; i++) {
+		int randIndex = rand() % n;
+		
+		listGet(list, randIndex, &elem1);
+		listSet(list, i, elem1, &elem2);
+		listSet(list, randIndex, elem2, &elem1);
+	}
 
-	listClear(list);
+	printf("\n--- After shuffle ---\n");
 	listPrint(list);
-
+	
 	listDestroy(&list);
-	listPrint(list);
 
 	return (EXIT_SUCCESS);
 }
