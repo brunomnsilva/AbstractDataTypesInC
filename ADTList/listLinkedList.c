@@ -194,7 +194,8 @@ void listPrint(PtList list) {
 
 			printf("Rank %d: ", rank);
 			listElemPrint(current->element);
-
+			printf("\n");
+			
 			rank++;
 			current = current->next;
 		}

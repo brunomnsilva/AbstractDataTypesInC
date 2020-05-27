@@ -113,7 +113,7 @@ int listSet(PtList list, int rank, ListElem elem, ListElem *ptOldElem) {
 	if (rank < 0 || rank > list->size - 1) return LIST_INVALID_RANK;
 
 	*ptOldElem = list->elements[rank];
-	
+
 	list->elements[rank] = elem;
 
 	return LIST_OK;
@@ -152,6 +152,7 @@ void listPrint(PtList list) {
 		for(int rank = 0; rank < list->size; rank++) {
 			printf("Rank %d: ", rank);
 			listElemPrint(list->elements[rank]);
+			printf("\n");
 		}
 	}
 	printf("\n");

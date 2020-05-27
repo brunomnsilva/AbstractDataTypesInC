@@ -153,3 +153,4 @@ int listClear(PtList list);
  * @param list [in] pointer to the list
  */
 void listPrint(PtList list);
+
