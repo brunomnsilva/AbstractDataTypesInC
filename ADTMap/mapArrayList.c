@@ -88,39 +88,6 @@ int mapDestroy(PtMap *ptMap) {
 	return MAP_OK;
 }
 
-int mapSize(PtMap map, int *ptSize) {
-	if (map == NULL) return MAP_NULL;
-	*ptSize = map->size;
-	return MAP_OK;
-}
-
-bool mapIsEmpty(PtMap map) {
-	if (map == NULL) return 1;
-	return (map->size == 0);
-}
-
-int mapClear(PtMap map) {
-	if (map == NULL) return MAP_NULL;
-	map->size = 0;
-	return MAP_OK;
-}
-
-void mapPrint(PtMap map) {
-	if (map == NULL) {
-		printf("(MAP NULL)\n");
-	}
-	else if (mapIsEmpty(map)) {
-		printf("(MAP EMPTY)\n");
-	}
-	else {
-		for (int i = 0; i < map->size; i++) {
-			mapKeyPrint(map->elements[i].key);
-			printf(" : \n");
-			mapValuePrint(map->elements[i].value);
-		}
-	}
-}
-
 int mapPut(PtMap map, MapKey key, MapValue value) {
 	if (map == NULL) return MAP_NULL;
 
@@ -195,3 +162,37 @@ MapValue* mapValues(PtMap map) {
 
 	return values;
 }
+
+int mapSize(PtMap map, int *ptSize) {
+	if (map == NULL) return MAP_NULL;
+	*ptSize = map->size;
+	return MAP_OK;
+}
+
+bool mapIsEmpty(PtMap map) {
+	if (map == NULL) return 1;
+	return (map->size == 0);
+}
+
+int mapClear(PtMap map) {
+	if (map == NULL) return MAP_NULL;
+	map->size = 0;
+	return MAP_OK;
+}
+
+void mapPrint(PtMap map) {
+	if (map == NULL) {
+		printf("(MAP NULL)\n");
+	}
+	else if (mapIsEmpty(map)) {
+		printf("(MAP EMPTY)\n");
+	}
+	else {
+		for (int i = 0; i < map->size; i++) {
+			mapKeyPrint(map->elements[i].key);
+			printf(" : \n");
+			mapValuePrint(map->elements[i].value);
+		}
+	}
+}
+

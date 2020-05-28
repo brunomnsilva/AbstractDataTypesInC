@@ -186,3 +186,4 @@ int mapClear(PtMap map);
  * @param map [in] pointer to the map
  */
 void mapPrint(PtMap map);
+

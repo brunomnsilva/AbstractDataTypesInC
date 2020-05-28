@@ -40,10 +40,7 @@ int main() {
 		}
 	}
 
-	// print the contents of the map
-	// mapPrint(map);
-
-	/* or, alternatively, print in table format */
+	/* Print in tabular format */
 	int size;
 	mapSize(map, &size);
 	MapKey *numbers = mapKeys(map);

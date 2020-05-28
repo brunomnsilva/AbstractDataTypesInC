@@ -105,59 +105,6 @@ int mapDestroy(PtMap *ptMap) {
 	return MAP_OK;
 }
 
-int mapSize(PtMap map, int *ptSize) {
-	if (map == NULL) return MAP_NULL;
-
-	*ptSize = map->size;
-
-	return MAP_OK;
-}
-
-bool mapIsEmpty(PtMap map) {
-	if (map == NULL) return true;
-
-	return (map->size == 0);
-}
-
-int mapClear(PtMap map) {
-	if (map == NULL) return MAP_NULL;
-
-	PtNode current = map->header->next;
-    while(current != map->trailer) {
-        current = current->next;
-        free(current->prev);
-    }
-
-	/* empty state of linked list */
-    map->header->next = map->trailer;
-    map->trailer->prev = map->header;
-
-	map->size = 0;
-	return MAP_OK;
-}
-
-void mapPrint(PtMap map) {
-	if (map == NULL) {
-		printf("(Map NULL)");
-	}
-	else if (mapIsEmpty(map)) {
-		printf("(Map EMPTY)");
-	}
-	else {
-		printf("Map contents (key / value): \n");
-		PtNode current = map->header->next;
-		while (current != map->trailer) {
-			mapKeyPrint(current->element.key);
-			printf(" : \n");
-			mapValuePrint(current->element.value);
-			printf("\n");
-
-			current = current->next;
-		}
-	}
-	printf("\n");
-}
-
 int mapPut(PtMap map, MapKey key, MapValue value) {
 	if (map == NULL) return MAP_NULL;
 
@@ -261,3 +208,57 @@ MapValue* mapValues(PtMap map) {
 
 	return values;
 }
+
+int mapSize(PtMap map, int *ptSize) {
+	if (map == NULL) return MAP_NULL;
+
+	*ptSize = map->size;
+
+	return MAP_OK;
+}
+
+bool mapIsEmpty(PtMap map) {
+	if (map == NULL) return true;
+
+	return (map->size == 0);
+}
+
+int mapClear(PtMap map) {
+	if (map == NULL) return MAP_NULL;
+
+	PtNode current = map->header->next;
+    while(current != map->trailer) {
+        current = current->next;
+        free(current->prev);
+    }
+
+	/* empty state of linked list */
+    map->header->next = map->trailer;
+    map->trailer->prev = map->header;
+
+	map->size = 0;
+	return MAP_OK;
+}
+
+void mapPrint(PtMap map) {
+	if (map == NULL) {
+		printf("(Map NULL)");
+	}
+	else if (mapIsEmpty(map)) {
+		printf("(Map EMPTY)");
+	}
+	else {
+		printf("Map contents (key / value): \n");
+		PtNode current = map->header->next;
+		while (current != map->trailer) {
+			mapKeyPrint(current->element.key);
+			printf(" : \n");
+			mapValuePrint(current->element.value);
+			printf("\n");
+
+			current = current->next;
+		}
+	}
+	printf("\n");
+}
+
