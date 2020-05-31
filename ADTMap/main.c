@@ -25,12 +25,12 @@ int main() {
 	printf("Processing numbers: ");
 	// 'sizeof(vec) / sizeof(int)' is possible only due 
 	// to static allocation in the scope of this function
+	int count;
 	for (int i = 0; i < sizeof(vec) / sizeof(int) ; i++) {
 		int number = vec[i];
 		printf("%d ", number);
 
 		if (mapContains(map, number)) { //existing number
-			int count;
 			mapGet(map, number, &count);
 			count++;
 			mapPut(map, number, count);
@@ -47,7 +47,6 @@ int main() {
 
 	printf("\nNumber | Count \n");
 	for (int i = 0; i < size; i++) {
-		int count;
 		mapGet(map, numbers[i], &count);
 		printf("%6d | %d \n", numbers[i], count);
 	}
