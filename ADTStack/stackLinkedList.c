@@ -50,6 +50,8 @@ PtStack stackCreate(unsigned int initialCapacity) {
     stack->trailer->next = NULL;
     stack->trailer->prev = stack->header;
 
+    stack->size = 0;
+
     return stack;
 }
 

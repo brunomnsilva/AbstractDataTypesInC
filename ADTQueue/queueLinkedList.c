@@ -51,6 +51,8 @@ PtQueue queueCreate(unsigned int initialCapacity) {
 	newQueue->trailer->next = NULL;
 	newQueue->trailer->prev = newQueue->header;
 
+	newQueue->size = 0;
+
 	return newQueue;
 }
 
@@ -66,7 +68,6 @@ int queueDestroy(PtQueue *ptQueue) {
 		free(remove);
 	}
 
-	/* free data structure */
 	free(queue);
 
 	*ptQueue = NULL;
@@ -142,8 +143,8 @@ bool queueIsEmpty(PtQueue queue) {
 int queueClear(PtQueue queue) {
 	if (queue == NULL) return QUEUE_NULL;
 	
-	/* Alternate implementation that leverages 
-	   queueDequeue to free nodes and decrement size */
+	/* Can leverage queueDequeue to free nodes 
+		and decrement size */
 	QueueElem elem;
 	while (!queueIsEmpty(queue)) {
 		queueDequeue(queue, &elem);
@@ -160,7 +161,6 @@ void queuePrint(PtQueue queue) {
 		printf("(Queue Empty) \n");
 	}
 	else {
-		//imprimir do inicio para o fim da fila:
 		printf("Queue contents (front to end): \n");
 		PtNode current = queue->header->next;
 		while (current != queue->trailer) {
