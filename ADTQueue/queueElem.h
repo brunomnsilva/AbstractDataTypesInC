@@ -5,7 +5,7 @@
  * The QueueElem is an alias to the type of elements 
  * held by an instance of the ADT Queue (PtQueue).
  * 
- * This alias just be changed according to the use-case.
+ * This alias must be changed according to the use-case.
  * 
  * @author Bruno Silva (brunomnsilva@gmail.com)
  * @bug No known bugs.

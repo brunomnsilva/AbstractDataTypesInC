@@ -104,7 +104,8 @@ int listGet(PtList list, int rank, ListElem *ptElem);
  * 
  * @param list [in] pointer to the list
  * @param rank [in] rank for replacement
- * @param ptOldElem [out] address of variable to hold the previous value
+ * @param elem  [in] element to put at the specified tank
+ * @param ptOldElem [out] address of variable to hold the previous element
  * 
  * @return LIST_OK if successful and previous value in 'ptOldElem', or
  * @return LIST_INVALID_RANK if 'rank' is invalid, or

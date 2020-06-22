@@ -8,7 +8,7 @@
  * The MapValue is an alias to the type of values 
  * held by an instance of the ADT Map (PtMap).
  *  
- * These aliases just be changed according to the use-case.
+ * These aliases must be changed according to the use-case.
  * 
  * @author Bruno Silva (brunomnsilva@gmail.com)
  * @bug No known bugs.
