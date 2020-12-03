@@ -45,14 +45,15 @@ void mapKeyPrint(MapKey key);
 void mapValuePrint(MapValue value);
 
 /**
- * @brief Compares two keys for equality.
+ * @brief Compares two keys.
  * 
- * This function is used by the ADT Map to perform
- * a key-based access to the underlying data.
+ * This function provides the comparison criteria
+ * between two keys.
  * 
  * @param key1 [in] a key
  * @param key2 [in] another key
- * @return 'true' if keys match, or
- * @return 'false' if keys don't match. 
+ * @return 0 if they are equa.
+ * @return value less than 0, if 'key1' is less than 'key2' 
+ * @return value greater than 0 if 'key1' is greater than 'key2' 
  */
-bool mapKeyEquals(MapKey key1, MapKey key2);
+int mapKeyCompare(MapKey key1, MapKey key2);

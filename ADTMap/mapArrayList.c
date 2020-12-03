@@ -37,7 +37,7 @@ static int findIndexOfKey(PtMap map, MapKey key) {
 	if (map == NULL) return -1;
 
 	for (int i = 0; i < map->size; i++) {
-		if (mapKeyEquals(map->elements[i].key, key)) {
+		if (mapKeyCompare(map->elements[i].key, key) == 0) {
 			return i;
 		}
 	}

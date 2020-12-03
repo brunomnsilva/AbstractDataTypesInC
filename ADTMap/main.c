@@ -40,11 +40,23 @@ int main() {
 		}
 	}
 
-	/* Print in tabular format */
+	/* Print in ordered tabular format */
 	int size;
 	mapSize(map, &size);
 	MapKey *numbers = mapKeys(map);
 
+	// Sort keys with, e.g., Bubble Sort
+	for(int i=0; i<size; i++) {
+		for(int j=0; j<size-i-1; j++) {
+			if( numbers[j] > numbers[j+1] ) {
+				int aux = numbers[j];
+				numbers[j] = numbers[j+1];
+				numbers[j+1] = aux;
+			}
+		}
+	}
+
+	// Print key/value pairs
 	printf("\nNumber | Count \n");
 	for (int i = 0; i < size; i++) {
 		mapGet(map, numbers[i], &count);

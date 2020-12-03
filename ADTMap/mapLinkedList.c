@@ -49,7 +49,7 @@ PtNode findNodeOfKey(PtMap map, MapKey key) {
 
 	PtNode current = map->header->next;
 	while(current != map->trailer) {
-		if (mapKeyEquals(current->element.key, key)) {
+		if (mapKeyCompare(current->element.key, key) == 0) {
 			return current;
 		}
 
