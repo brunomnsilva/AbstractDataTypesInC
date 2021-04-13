@@ -1,9 +1,11 @@
+default: arraylist
+
 arraylist:
-	gcc -o prog -g mapElem.c mapArrayList.c main.c 
+	gcc -Wall -o prog -g mapElem.c mapArrayList.c main.c 
 
 linkedlist:
-	gcc -o prog -g mapElem.c mapLinkedList.c main.c
+	gcc -Wall -o prog -g mapElem.c mapLinkedList.c main.c
 
 clean:
-	rm -f prog
+	rm -f ./prog
 
