@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define INITIAL_CAPACITY 20
+
 typedef struct queueImpl {
 	QueueElem *elements;
 	int capacity;
@@ -33,11 +35,11 @@ static bool ensureCapacity(PtQueue queue) {
 	return true;
 }
 
-PtQueue queueCreate(unsigned int initialCapacity) {
+PtQueue queueCreate() {
 	PtQueue queue = (PtQueue)malloc(sizeof(QueueImpl));
 	if (queue == NULL) return NULL;
 
-	queue->elements = (QueueElem*)calloc(initialCapacity, 
+	queue->elements = (QueueElem*)calloc(INITIAL_CAPACITY, 
 											sizeof(QueueElem));
 	if (queue->elements == NULL)
 	{
@@ -45,7 +47,7 @@ PtQueue queueCreate(unsigned int initialCapacity) {
 		return NULL;
 	}
 
-	queue->capacity = initialCapacity;
+	queue->capacity = INITIAL_CAPACITY;
 	queue->size = 0;
 
 	return queue;

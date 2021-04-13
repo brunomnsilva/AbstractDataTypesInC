@@ -12,6 +12,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define INITIAL_CAPACITY 20
+
 typedef struct keyValue {
 	MapKey key;
 	MapValue value;
@@ -59,18 +61,18 @@ static bool ensureCapacity(PtMap map) {
 	return true;
 }
 
-PtMap mapCreate(unsigned int initialCapacity) {
+PtMap mapCreate() {
 	PtMap newMap = (PtMap)malloc(sizeof(MapImpl));
 	if (newMap == NULL) return NULL;
 
-	newMap->elements = (KeyValue*)calloc(initialCapacity, sizeof(KeyValue));
+	newMap->elements = (KeyValue*)calloc(INITIAL_CAPACITY, sizeof(KeyValue));
 	if (newMap->elements == NULL) {
 		free(newMap);
 		return NULL;
 	}
 
 	newMap->size = 0;
-	newMap->capacity = initialCapacity;
+	newMap->capacity = INITIAL_CAPACITY;
 
 	return newMap;
 }

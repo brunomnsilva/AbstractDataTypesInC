@@ -29,7 +29,7 @@ typedef struct queueImpl {
 } QueueImpl;
 
 
-PtQueue queueCreate(unsigned int initialCapacity) {
+PtQueue queueCreate() {
 	PtQueue newQueue = (PtQueue)malloc(sizeof(QueueImpl));
 	if (newQueue == NULL) return NULL;
 

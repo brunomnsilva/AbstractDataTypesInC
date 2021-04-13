@@ -28,12 +28,10 @@ typedef struct stackImpl *PtStack;
 /**
  * @brief Creates a new empty stack.
  * 
- * @param initialCapacity [in] The desired initial capacity (?)
- * 
  * @return PtStack pointer to allocated data structure, or
  * @return NULL if unsufficient memory for allocation
  */
-PtStack stackCreate(unsigned int initialCapacity);
+PtStack stackCreate();
 
 /**
  * @brief Free all resources of a stack.

@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define INITIAL_CAPACITY 20
+
 typedef struct stackImpl { 
     StackElem *elements;   
     int capacity;     
@@ -33,11 +35,11 @@ static bool ensureCapacity(PtStack stack) {
     return true;
 }
 
-PtStack stackCreate(unsigned int initialCapacity) {
+PtStack stackCreate() {
     PtStack stack = (PtStack)malloc(sizeof(StackImpl));
     if (stack == NULL) return NULL;
 
-    stack->elements = (StackElem*)calloc(initialCapacity,
+    stack->elements = (StackElem*)calloc(INITIAL_CAPACITY,
                         sizeof(StackElem));
 
     if (stack->elements == NULL) {
@@ -46,7 +48,7 @@ PtStack stackCreate(unsigned int initialCapacity) {
     }
 
     stack->size = 0;
-    stack->capacity = initialCapacity;
+    stack->capacity = INITIAL_CAPACITY;
 
     return stack;
 }

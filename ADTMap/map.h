@@ -29,12 +29,10 @@ typedef struct mapImpl *PtMap;
 /**
  * @brief Creates a new empty map.
  * 
- * @param initialCapacity [in] The desired initial capacity (?)
- * 
  * @return PtMap pointer to allocated data structure, or
  * @return NULL if unsufficient memory for allocation
  */
-PtMap mapCreate(unsigned int initialCapacity);
+PtMap mapCreate();
 
 /**
  * @brief Free all resources of a map.

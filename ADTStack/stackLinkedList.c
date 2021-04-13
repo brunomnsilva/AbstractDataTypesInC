@@ -28,7 +28,7 @@ typedef struct stackImpl {
     int size;
 } StackImpl;
 
-PtStack stackCreate(unsigned int initialCapacity) {
+PtStack stackCreate() {
     PtStack stack = (PtStack)malloc(sizeof(StackImpl));
     if (stack == NULL) return NULL;
     

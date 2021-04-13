@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define INITIAL_CAPACITY 20
+
 typedef struct listImpl {
 	ListElem* elements;
 	int size; 
@@ -34,11 +36,11 @@ static bool ensureCapacity(PtList list) {
 	return true;
 }
 
-PtList listCreate(unsigned int initialCapacity) {
+PtList listCreate() {
 	PtList list = (PtList)malloc(sizeof(ListImpl));
 	if (list == NULL) return NULL;
 
-	list->elements = (ListElem*)calloc(initialCapacity,
+	list->elements = (ListElem*)calloc(INITIAL_CAPACITY,
 										sizeof(ListElem));
 
 	if (list->elements == NULL) {
@@ -47,7 +49,7 @@ PtList listCreate(unsigned int initialCapacity) {
 	}
 
 	list->size = 0;
-	list->capacity = initialCapacity;
+	list->capacity = INITIAL_CAPACITY;
 
 	return list;
 }

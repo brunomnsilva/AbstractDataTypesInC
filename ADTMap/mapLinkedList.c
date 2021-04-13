@@ -58,7 +58,7 @@ PtNode findNodeOfKey(PtMap map, MapKey key) {
 	return NULL;
 }
 
-PtMap mapCreate(unsigned int initialCapacity) {
+PtMap mapCreate() {
 	PtMap map = (PtMap)malloc(sizeof(MapImpl));
 	if (map == NULL) return NULL;
 	

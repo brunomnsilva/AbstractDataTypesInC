@@ -46,7 +46,7 @@ static PtNode nodeAtRank(PtList list, int rank) {
 }
 
 
-PtList listCreate(unsigned int initialCapacity) {
+PtList listCreate() {
 		
 	PtList newList = (PtList)malloc(sizeof(ListImpl));
 	if (newList == NULL) return NULL;

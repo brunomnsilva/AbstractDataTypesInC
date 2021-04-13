@@ -28,12 +28,10 @@ typedef struct queueImpl *PtQueue;
 /**
  * @brief Creates a new empty queue.
  * 
- * @param initialCapacity [in] The desired initial capacity (?)
- * 
  * @return PtQueue pointer to allocated data structure, or
  * @return NULL if unsufficient memory for allocation
  */
-PtQueue queueCreate(unsigned int initialCapacity);
+PtQueue queueCreate();
 
 /**
  * @brief Free all resources of a queue.

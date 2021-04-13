@@ -7,8 +7,10 @@ WPI/
 
 # Ignore working folders
 
+ADTBST/
 ADTStackGeneric/
 ADTMapHashTable/
+ADTMapBinarySearchTree/
 
 # Ignore uncommented versions of files
 

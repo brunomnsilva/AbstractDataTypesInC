@@ -29,12 +29,10 @@ typedef struct listImpl *PtList;
 /**
  * @brief Creates a new empty list.
  * 
- * @param initialCapacity [in] The desired initial capacity (?)
- * 
  * @return PtList pointer to allocated data structure, or
  * @return NULL if unsufficient memory for allocation
  */
-PtList listCreate(unsigned int initialCapacity);
+PtList listCreate();
 
 /**
  * @brief Free all resources of a list.
