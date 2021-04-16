@@ -19,9 +19,10 @@ typedef int ListElem;
 /**
  * @brief Prints an element.
  * 
- * Must be implemented according to type
- * of defined for ListElem.
+ * Must be implemented according to the concrete
+ * type of ListElem.
  * 
  * @param elem [in] element to print
  */
 void listElemPrint(ListElem elem);
+

@@ -15,7 +15,7 @@
 #include "stack.h"
 
 int main() {
-    PtStack stack = stackCreate(4);
+    PtStack stack = stackCreate();
     if(stack == NULL) {
         printf("Could not create the stack. \n");
         return EXIT_FAILURE;

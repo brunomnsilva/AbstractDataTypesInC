@@ -20,7 +20,7 @@ int main() {
 
 	int vec[] = { 1,1,2,1,4,3,1,2,2,4,4,13,7,5,5,5,9 };
 
-	PtMap map = mapCreate(4);
+	PtMap map = mapCreate();
 
 	printf("Processing numbers: ");
 	// 'sizeof(vec) / sizeof(int)' is possible only due 

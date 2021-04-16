@@ -27,7 +27,7 @@ typedef int MapValue;
 /**
  * @brief Prints a key.
  * 
- * Must be implemented according concrete
+ * Must be implemented according to the concrete
  * type of MapKey.
  * 
  * @param key [in] key to print
@@ -37,7 +37,7 @@ void mapKeyPrint(MapKey key);
 /**
  * @brief Prints a value.
  * 
- * Must be implemented according concrete
+ * Must be implemented according to the concrete
  * type of MapValue.
  * 
  * @param value [in] value to print
@@ -52,8 +52,9 @@ void mapValuePrint(MapValue value);
  * 
  * @param key1 [in] a key
  * @param key2 [in] another key
- * @return 0 if they are equa.
+ * @return 0 if they are equal.
  * @return value less than 0, if 'key1' is less than 'key2' 
  * @return value greater than 0 if 'key1' is greater than 'key2' 
  */
 int mapKeyCompare(MapKey key1, MapKey key2);
+

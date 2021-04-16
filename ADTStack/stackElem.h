@@ -19,9 +19,10 @@ typedef int StackElem;
 /**
  * @brief Prints an element.
  * 
- * Must be implemented according concrete
+ * Must be implemented according to the concrete
  * type of StackElem.
  * 
  * @param elem [in] element to print
  */
 void stackElemPrint(StackElem elem);
+

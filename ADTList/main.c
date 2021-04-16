@@ -17,7 +17,7 @@
 int main(int argc, char** argv) {
 	srand(time(NULL));
 
-	PtList list = listCreate(10);
+	PtList list = listCreate();
 	/* Populate with values*/
 	for(int i=0; i < 9; i++) {
 		listAdd(list, i, (i+1) );
