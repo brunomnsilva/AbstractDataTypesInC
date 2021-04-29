@@ -99,7 +99,7 @@ int mapPut(PtMap map, MapKey key, MapValue value) {
 		return MAP_OK;
 	}
 	else {
-		if (!ensureCapacity(map)) return MAP_FULL;
+		if (!ensureCapacity(map)) return MAP_NO_MEMORY;
 		
 		map->elements[map->size].key = key;
 		map->elements[map->size].value = value;

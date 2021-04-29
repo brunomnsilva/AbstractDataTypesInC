@@ -79,7 +79,7 @@ int stackPush(PtStack stack, StackElem elem) {
     if (stack == NULL) return STACK_NULL;
     
     PtNode newTop = (PtNode)malloc(sizeof(Node));
-    if(newTop == NULL) return STACK_FULL;
+    if(newTop == NULL) return STACK_NO_MEMORY;
 
     PtNode curTop = stack->header->next;
 

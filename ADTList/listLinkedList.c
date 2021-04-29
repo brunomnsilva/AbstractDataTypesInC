@@ -92,6 +92,8 @@ int listAdd(PtList list, int rank, ListElem elem) {
 	PtNode nodePrevRank = nodeCurRank->prev;
 
 	PtNode newNode = (PtNode)malloc(sizeof(Node));
+	if( newNode == NULL) return LIST_NO_MEMORY;
+	
 	newNode->element = elem;
 	newNode->next = nodeCurRank;
 	newNode->prev = nodePrevRank;

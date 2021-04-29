@@ -119,7 +119,7 @@ int mapPut(PtMap map, MapKey key, MapValue value) {
 	else {
 		/* allocate new node and place it at the beggining of the list */
 		PtNode newNode = (PtNode)malloc(sizeof(Node));
-		if(newNode == NULL) return MAP_FULL;
+		if(newNode == NULL) return MAP_NO_MEMORY;
 
 		KeyValue tuple = {key, value};
 		
@@ -181,6 +181,7 @@ MapKey* mapKeys(PtMap map) {
 	if (map == NULL) return NULL;
 
 	MapKey *keys = (MapKey*)calloc(map->size, sizeof(MapKey));
+	if( keys == NULL) return NULL;
 
 	int i = 0;
 	PtNode current = map->header->next;
@@ -197,6 +198,7 @@ MapValue* mapValues(PtMap map) {
 	if (map == NULL) return NULL;
 
 	MapValue *values = (MapValue*)calloc(map->size, sizeof(MapValue));
+	if( values == NULL) return NULL;
 
 	int i = 0;
 	PtNode current = map->header->next;

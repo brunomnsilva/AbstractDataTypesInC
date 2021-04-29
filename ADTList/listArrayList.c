@@ -70,7 +70,7 @@ int listAdd(PtList list, int rank, ListElem elem) {
 	if (list == NULL) return LIST_NULL;
 	if (rank < 0 || rank > list->size) return LIST_INVALID_RANK;
 
-	if(!ensureCapacity(list)) return LIST_FULL;
+	if(!ensureCapacity(list)) return LIST_NO_MEMORY;
 
 	/* make room for new element at index 'rank' */
 	for(int i = list->size; i > rank; i--) {

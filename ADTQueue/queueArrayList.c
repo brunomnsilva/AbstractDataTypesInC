@@ -67,7 +67,7 @@ int queueDestroy(PtQueue *ptQueue) {
 int queueEnqueue(PtQueue queue, QueueElem elem) {
 	if (queue == NULL) return QUEUE_NULL;
 
-	if(!ensureCapacity(queue)) return QUEUE_FULL;
+	if(!ensureCapacity(queue)) return QUEUE_NO_MEMORY;
 
 	queue->elements[queue->size++] = elem;
 	

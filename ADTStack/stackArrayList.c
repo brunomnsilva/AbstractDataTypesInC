@@ -68,7 +68,7 @@ int stackDestroy(PtStack *ptStack) {
 int stackPush(PtStack stack, StackElem elem) {
     if (stack == NULL) return STACK_NULL;
     
-    if(!ensureCapacity(stack)) return STACK_FULL;
+    if(!ensureCapacity(stack)) return STACK_NO_MEMORY;
 
     stack->elements[stack->size] = elem;
     stack->size++;
