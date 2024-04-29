@@ -250,11 +250,11 @@ void mapPrint(PtMap map) {
 		printf("(Map EMPTY)");
 	}
 	else {
-		printf("Map contents (key / value): \n");
+		printf("Map contents(<key> : <value>): \n");
 		PtNode current = map->header->next;
 		while (current != map->trailer) {
 			mapKeyPrint(current->element.key);
-			printf(" : \n");
+			printf(" : ");
 			mapValuePrint(current->element.value);
 			printf("\n");
 

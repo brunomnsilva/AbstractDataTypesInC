@@ -10,11 +10,11 @@
 #include <stdio.h>
 
 void mapKeyPrint(MapKey key) {
-	printf("%d \n", key);
+	printf("%d", key);
 }
 
 void mapValuePrint(MapValue value) {
-	printf("%d \n", value);
+	printf("%d", value);
 }
 
 int mapKeyCompare(MapKey key1, MapKey key2) {
