@@ -179,6 +179,13 @@ bool mapIsEmpty(PtMap map) {
 int mapClear(PtMap map) {
 	if (map == NULL) return MAP_NULL;
 	map->size = 0;
+	
+	// Housekeeping. Array can be very large at this point, realloc to initial size
+	if(map->capacity > INITIAL_CAPACITY) {
+		map->elements = (KeyValue*)realloc(map->elements, INITIAL_CAPACITY * sizeof(KeyValue));
+		map->capacity = INITIAL_CAPACITY;
+	}
+
 	return MAP_OK;
 }
 

@@ -116,6 +116,12 @@ int stackClear(PtStack stack) {
 
     stack->size = 0;
 
+    // Housekeeping. Array can be very large at this point, realloc to initial size
+	if(stack->capacity > INITIAL_CAPACITY) {
+		stack->elements = (StackElem*)realloc(stack->elements, INITIAL_CAPACITY * sizeof(StackElem));
+		stack->capacity = INITIAL_CAPACITY;
+	}
+
     return STACK_OK;
 }
 

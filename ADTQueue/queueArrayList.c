@@ -121,6 +121,12 @@ int queueClear(PtQueue queue) {
 
 	queue->size = 0;
 
+	// Housekeeping. Array can be very large at this point, realloc to initial size
+	if(queue->capacity > INITIAL_CAPACITY) {
+		queue->elements = (QueueElem*)realloc(queue->elements, INITIAL_CAPACITY * sizeof(QueueElem));
+		queue->capacity = INITIAL_CAPACITY;
+	}
+
 	return QUEUE_OK;
 }
 

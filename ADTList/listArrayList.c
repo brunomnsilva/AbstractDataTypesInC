@@ -140,6 +140,12 @@ int listClear(PtList list) {
 
 	list->size = 0;
 
+	// Housekeeping. Array can be very large at this point, realloc to initial size
+	if(list->capacity > INITIAL_CAPACITY) {
+		list->elements = (ListElem*)realloc(list->elements, INITIAL_CAPACITY * sizeof(ListElem));
+		list->capacity = INITIAL_CAPACITY;
+	}
+
 	return LIST_OK;
 }
 void listPrint(PtList list) {
@@ -152,7 +158,7 @@ void listPrint(PtList list) {
 	else {
 		printf("List contents (by rank): \n");
 		for(int rank = 0; rank < list->size; rank++) {
-			printf("Rank %d: ", rank);
+			printf("Rank %4d: ", rank);
 			listElemPrint(list->elements[rank]);
 			printf("\n");
 		}
