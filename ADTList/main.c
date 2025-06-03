@@ -18,6 +18,8 @@ int main(int argc, char** argv) {
 	srand(time(NULL));
 
 	PtList list = listCreate();
+	if(!list) return EXIT_FAILURE;
+
 	/* Populate with values*/
 	for(int i=0; i < 9; i++) {
 		listAdd(list, i, (i+1) );

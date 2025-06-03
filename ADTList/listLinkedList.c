@@ -52,7 +52,17 @@ PtList listCreate() {
 	if (newList == NULL) return NULL;
 
 	newList->header = (PtNode)malloc(sizeof(Node));
+	if(newList->header == NULL) {
+		free(newList);
+		return NULL;
+	}
+
 	newList->trailer = (PtNode)malloc(sizeof(Node));
+	if(newList->trailer == NULL) {
+		free(newList->header);
+		free(newList);
+		return NULL;
+	}
 
 	newList->header->prev = NULL;
 	newList->header->next = newList->trailer;
@@ -194,7 +204,7 @@ void listPrint(PtList list) {
 		PtNode current = list->header->next;
 		while (current != list->trailer) {
 
-			printf("Rank %d: ", rank);
+			printf("Rank %4d: ", rank);
 			listElemPrint(current->element);
 			printf("\n");
 			
