@@ -3,6 +3,7 @@
 This respository contains specifications and implementations for several abstract data types in C, namely:
 
 - ADT Complex (simple/mathematical);
+- ADT Time (simple/mathematical);
 - ADT Stack (collection);
 - ADT Queue (collection);
 - ADT List (collection);
